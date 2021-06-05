@@ -150,6 +150,13 @@ def ProcessVideo(videoPath):
         # Load the weights and configutation to form the pretrained YOLOv3 model
         net = cv2.dnn.readNetFromDarknet(args.config, args.weights)
 
+        # if install opencv-python CUDA successful uncomment 3 lines bellow:
+        # if(cv2.cuda.getCudaEnabledDeviceCount() > 0):
+        #     net.setPreferableBackend(cv2.dnn.DNN_BACKEND_CUDA)
+        #     net.setPreferableTarget(cv2.dnn.DNN_TARGET_CUDA)
+
+
+
         # Get the output layer names of the model
         layer_names = net.getLayerNames()
         layer_names = [layer_names[i[0] - 1] for i in net.getUnconnectedOutLayers()]
